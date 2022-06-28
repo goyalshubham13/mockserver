@@ -7,4 +7,14 @@ express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
+  .post('/auth', (req, res) => res.send({
+    "commands":[
+      {
+        "type":"com.okta.action.update",
+        "value":{
+          "credential":"VERIFIED"
+        }
+      }
+    ]
+  }))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
